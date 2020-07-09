@@ -25,7 +25,7 @@ function get_stats {
 
     SAMPLE_ID=$(grep -oP '^\s-\sSample\sID\sfor\soutput:\s\K\S+' ${FILE})
     BARCODE=$(grep -oP '^\s-\sBarcodes\sfor\sthis\srun:\s\K\S+' ${FILE})
-    IN_READS=$(grep -oP '^Reads\spre\sguppyplex:\s\K\S+' ${FILE})
+    IN_READS=$(grep -oP '^Total\sinput\sreads\spre\sguppyplex:\s\K\S+' ${FILE})
     OUT_READS=$(grep -oP '^Reads\spost\sguppyplex:\s\K\S+' ${FILE} | head -n 1)
     PC_R=$(grep -oP '^Reads\spost\sguppyplex:\s\d+\s\(\K\d+\.\d+' ${FILE} | head -n 1)
     IN_DEPTH=$(grep -oP '^Mean\sdepth\sof\sinput\salignment:\s\K\S+' ${FILE})
