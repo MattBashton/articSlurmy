@@ -50,7 +50,7 @@ git clone https://github.com/hCoV-2019/pangolin
 cd pangolin
 conda env create -f environment.yml
 conda activate pangolin
-pip install .
+python setup.py install
 conda deactivate
 ```
 
