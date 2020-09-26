@@ -45,7 +45,7 @@ do
 done
 
 # Write out header line to file
-echo -e "central_sample_id\tbarcode\ttotal_reads\tpost_guppyplex_reads\treads_carried_into_analysis\tinput_depth\touput_depth\tnumber_consensus_Ns\t%N\tvariants_called\tlineage" > run_stats.tsv
+echo -e "central_sample_id\tbarcode\ttotal_reads\tpost_guppyplex_reads\treads_carried_into_analysis\tinput_depth\toutput_depth\tnumber_consensus_Ns\t%N\tvariants_called\tlineage" > run_stats.tsv
 
 # Sort our ouptut by barcode
 sort -k 2 run_stats.tmp >> run_stats.tsv
