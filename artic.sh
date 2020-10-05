@@ -194,6 +194,8 @@ echo "Creating output dir at ${OUTPUT_DIR}/processed/${RUN_NAME}"
 mkdir -p ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Copying ${SAMPLE}.* ..."
 cp ${TMPDIR}/${SAMPLE}.* ${OUTPUT_DIR}/processed/${RUN_NAME}
+echo "Copying ${SAMPLE}-* ..."
+cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Gzipping ${RUN_NAME}_${BARCODE}.fastq ..."
 # Needs pigz, conda install pigz, into your artic-ncov2019 env
 # Or replace with single threaded gzip, omitting -p ${CPU}
