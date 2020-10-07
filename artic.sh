@@ -118,6 +118,11 @@ echo ""
 echo "Current output is:"
 ls -lh
 
+# Find number of aligned reads in ${SAMPLE}.sorted.bam
+echo ""
+ALN_READS=$(samtools idxstats ${TMPDIR}/${SAMPLE}.sorted.bam | awk NR==1 | cut -f 3)
+echo "Aligned reads in .sorted.bam: ${ALN_READS}"
+
 # Annotate with annovar
 # Work out No variants called
 VAR=$(zgrep -cv '^#' ${SAMPLE}.pass.vcf.gz || true)
@@ -194,8 +199,6 @@ echo "Creating output dir at ${OUTPUT_DIR}/processed/${RUN_NAME}"
 mkdir -p ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Copying ${SAMPLE}.* ..."
 cp ${TMPDIR}/${SAMPLE}.* ${OUTPUT_DIR}/processed/${RUN_NAME}
-echo "Copying ${SAMPLE}-* ..."
-cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Gzipping ${RUN_NAME}_${BARCODE}.fastq ..."
 # Needs pigz, conda install pigz, into your artic-ncov2019 env
 # Or replace with single threaded gzip, omitting -p ${CPU}
@@ -230,6 +233,7 @@ echo "==========="
 echo ""
 echo "Reads pre guppyplex: ${READS_PRE}"
 echo "Reads post guppyplex: ${READS_POST} (${PC_PLEX}%)"
+echo "Aligned reads in sorted.bam: ${ALN_READS}"
 echo "Number of Ns consensus: ${TOTAL_N} (${PC_N}%)"
 echo "Mean depth of input alignment: ${IN_DEPTH}"
 echo "Mean depth of final alignment: ${OUT_DEPTH}"
@@ -240,6 +244,7 @@ echo ""
 echo "Reads pre guppyplex: ${READS_PRE}" > ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
 echo "Reads post guppyplex: ${READS_POST}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
 echo "Reads post guppyples %: ${PC_PLEX}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
+echo "Aligned reads in sorted.bam: ${ALN_READS}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
 echo "Number of Ns consensus: ${TOTAL_N}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
 echo "Number of Ns consensus %: ${PC_N}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt
 echo "Mean depth of input alignment: ${IN_DEPTH}" >> ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.stats.txt

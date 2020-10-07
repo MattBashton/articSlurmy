@@ -28,6 +28,7 @@ function get_stats {
     IN_READS=$(grep -oP '^Total\sinput\sreads\spre\sguppyplex:\s\K\S+' ${FILE})
     OUT_READS=$(grep -oP '^Reads\spost\sguppyplex:\s\K\S+' ${FILE} | head -n 1)
     PC_R=$(grep -oP '^Reads\spost\sguppyplex:\s\d+\s\(\K\d+\.\d+' ${FILE} | head -n 1)
+    ALN_READS=$(grep -oP '^Aligned\sreads\sin\s\.sorted.bam:\s\K\d+' ${FILE})
     IN_DEPTH=$(grep -oP '^Mean\sdepth\sof\sinput\salignment:\s\K\S+' ${FILE})
     OUT_DEPTH=$(grep -oP '^Mean\sdepth\sof\sfinal\salignment:\s\K\S+' ${FILE})
     N=$(grep -oP '^Number\sof\sNs\sconsensus:\s\K\d+' ${FILE})
@@ -35,7 +36,7 @@ function get_stats {
     VARS=$(grep -oP '^Number\sof\svariants\scalled:\s\K\d+' ${FILE} | head -n 1)
     LINEAGE=$(grep -A 1 '^taxon' ${FILE} | tail -n 1 | tr -s ' ' | cut -d ' ' -f 2)
 
-    echo -e "${SAMPLE_ID}\t${BARCODE}\t${IN_READS}\t${OUT_READS}\t${PC_R}\t${IN_DEPTH}\t${OUT_DEPTH}\t${N}\t${PC_N}\t${VARS}\t${LINEAGE}"
+    echo -e "${SAMPLE_ID}\t${BARCODE}\t${IN_READS}\t${OUT_READS}\t${PC_R}\t${ALN_READS}\t${IN_DEPTH}\t${OUT_DEPTH}\t${N}\t${PC_N}\t${VARS}\t${LINEAGE}"
 
 }
 
@@ -45,7 +46,7 @@ do
 done
 
 # Write out header line to file
-echo -e "central_sample_id\tbarcode\ttotal_reads\tpost_guppyplex_reads\treads_carried_into_analysis\tinput_depth\toutput_depth\tnumber_consensus_Ns\t%N\tvariants_called\tlineage" > run_stats.tsv
+echo -e "central_sample_id\tbarcode\ttotal_reads\tpost_guppyplex_reads\treads_carried_into_analysis\taligned_reads\tinput_depth\toutput_depth\tnumber_consensus_Ns\t%N\tvariants_called\tlineage" > run_stats.tsv
 
 # Sort our ouptut by barcode
 sort -k 2 run_stats.tmp >> run_stats.tsv
