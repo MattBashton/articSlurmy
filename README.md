@@ -74,7 +74,7 @@ _e_._g_.:
 
 `submit_ARTIC_run.sh sample_sheet.tsv  run_output/ run_output/sequencing_summary.txt analysis_output 2020-05-25_MACHINE-ID_CENT-0001_FLOWCELL-ID`
 
-## Ouput
+## Output
 
 The output directory specified above will include two subdirs, i) `processed/` which contains all output generated for all samples in the run, prefixed with their `central_sample_ids`, and ii) `upload/` which within a global run name directory has subdirectories for each `central_sample_id` that contain `alignment.bam` and `consensus.fa` ready for submission to CLIMB if you are contributing to COG-UK:
 
