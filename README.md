@@ -98,10 +98,10 @@ The output directory will also contain `artic.oJOBID.N` and `artic.eJOBID.N` fil
 Once a run is complete the `getStats.sh` script located in the output dir can be run to generate a run report which is also written to the file `run_stats.tsv` this contains details of total reads, depth, consensus Ns, variants called and lineage assignment per barcode/sample.  This takes the form of:
 
 ```
-central_sample_id  barcode    total_reads  post_guppyplex_reads  reads_carried_into_analysis  input_depth  ouput_depth  number_consensus_Ns  %N     variants_called  lineage
-CENT-188D9E        barcode01  540824       532110                98.39                        6723.14      401.12       124                  0.41   14               B.1.1
-CENT-188F98        barcode02  179183       174903                97.61                        2200.65      371.30       658                  2.20   3                B.3
-CENT-18994E        barcode03  3026802      2837018               93.73                        35952.53     431.82       123                  0.41   11               B.1.56
+central_sample_id  barcode    total_reads  post_guppyplex_reads  reads_carried_into_analysis  aligned_reads  input_depth  ouput_depth  number_consensus_Ns  %N     variants_called  lineage
+CENT-188D9E        barcode01  540824       532110                98.39                        520105         6723.14      401.12       124                  0.41   14               B.1.1
+CENT-188F98        barcode02  179183       174903                97.61                        173812         2200.65      371.30       658                  2.20   3                B.3
+CENT-18994E        barcode03  3026802      2837018               93.73                        2794672        35952.53     431.82       123                  0.41   11               B.1.56
 ```
 
 ## Similar work
