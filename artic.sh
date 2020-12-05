@@ -27,17 +27,17 @@ set -u
 set -o pipefail
 
 # Get our input arguments
-BARCODE_MAPPING="$1"
-SEQ_SUM="$2"
-INPUT_DIR="$3"
-OUTPUT_DIR="$4"
-RUN_NAME="$5"
+BARCODE_MAPPING="${1}"
+SEQ_SUM="${2}"
+INPUT_DIR="${3}"
+OUTPUT_DIR="${4}"
+RUN_NAME="${5}"
 
 # Parse barcode mapping
-LINE=$(awk "NR==$SLURM_ARRAY_TASK_ID" ${BARCODE_MAPPING})
+LINE=$(awk "NR==$S{LURM_ARRAY_TASK_ID}" ${BARCODE_MAPPING})
 set ${LINE}
-BARCODE="$1"
-SAMPLE="$2"
+BARCODE="${1}"
+SAMPLE="${2}"
 
 # Some defaults for ONT data
 # See https://artic.network/ncov-2019/ncov2019-bioinformatics-sop.html
