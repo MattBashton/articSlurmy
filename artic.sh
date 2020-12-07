@@ -34,7 +34,7 @@ OUTPUT_DIR="${4}"
 RUN_NAME="${5}"
 
 # Parse barcode mapping
-LINE=$(awk "NR==$S{LURM_ARRAY_TASK_ID}" ${BARCODE_MAPPING})
+LINE=$(awk "NR==${SLURM_ARRAY_TASK_ID}" ${BARCODE_MAPPING})
 set ${LINE}
 BARCODE="${1}"
 SAMPLE="${2}"
