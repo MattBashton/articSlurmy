@@ -120,7 +120,7 @@ ls -lh
 
 # Find number of aligned reads in ${SAMPLE}.sorted.bam
 echo ""
-ALN_READS=$(samtools idxstats ${TMPDIR}/${SAMPLE}.sorted.bam | awk NR==1 | cut -f 3)
+ALN_READS=$(samtools view -c -F 260 ${TMPDIR}/${SAMPLE}.sorted.bam)
 echo "Aligned reads in .sorted.bam: ${ALN_READS}"
 
 # Annotate with annovar
