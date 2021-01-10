@@ -193,13 +193,13 @@ mkdir -p ${OUTPUT_DIR}/upload/${RUN_NAME}/${SAMPLE}
 echo "Copying upload data..."
 cp ${TMPDIR}/${SAMPLE}.consensus.fasta ${OUTPUT_DIR}/upload/${RUN_NAME}/${SAMPLE}/consensus.fa
 cp ${TMPDIR}/${SAMPLE}.sorted.bam ${OUTPUT_DIR}/upload/${RUN_NAME}/${SAMPLE}/alignment.bam
-echo "Copying ${SAMPLE}-* ..."
-cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
 # Dir for all output
 echo "Creating output dir at ${OUTPUT_DIR}/processed/${RUN_NAME}"
 mkdir -p ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Copying ${SAMPLE}.* ..."
 cp ${TMPDIR}/${SAMPLE}.* ${OUTPUT_DIR}/processed/${RUN_NAME}
+echo "Copying ${SAMPLE}-* ..."
+cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
 
 echo "Gzipping ${RUN_NAME}_${BARCODE}.fastq ..."
 # Needs pigz, conda install pigz, into your artic-ncov2019 env
