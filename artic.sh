@@ -109,7 +109,7 @@ READS_POST=$(awk '{s++}END{print s/4}' ${TMPDIR}/${RUN_NAME}_${BARCODE}.fastq)
 PC_PLEX=$(echo "scale=8; (${READS_POST}/${READS_PRE})*100" | bc | xargs printf "%.2f\n")
 echo "Reads post guppyplex: ${READS_POST} (${PC_PLEX}%)"
 
-# artic minion final stage, many output / temp files streamed to
+# artic minion final stage, many output / temp files  written to ${TMPDIR} 
 echo "Running artic minion --normalise ${NORMALISE} on ${CPU} threads, fast5 dir is: ${INPUT_DIR}/fast5_pass"
 artic minion --normalise ${NORMALISE} --threads ${CPU} --scheme-directory ${SCHEME_DIR} --read-file ${TMPDIR}/${RUN_NAME}_${BARCODE}.fastq --fast5-directory ${INPUT_DIR}/fast5_pass --sequencing-summary ${SEQ_SUM} ${PRIMERS} ${SAMPLE}
 
