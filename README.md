@@ -105,4 +105,4 @@ CENT-18994E        barcode03  3026802      2837018               93.73          
 ```
 
 ## Similar work
-There are two Nextflow based pipelines which more or less have similar functionality to this pipeline, the [Connar lab ncov2019-artic-nf](https://github.com/connor-lab/ncov2019-artic-nf) and the [nf-core artic](https://github.com/nf-core/artic) implementation.
+The [Connar lab ncov2019-artic-nf](https://github.com/connor-lab/ncov2019-artic-nf) Nextflow pipeline has more or less similar functionality to this pipeline.
