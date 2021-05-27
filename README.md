@@ -39,7 +39,7 @@ conda install mosdepth
 conda install bedtools
 ```
 
-Next we need to install [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) for variant annotation, which sadly is not available for easy conda based installation, via the [registration form](https://www.openbioinformatics.org/annovar/annovar_download_form.php), articSlurmy will assume you have installed it to `~/annovar` with the "SARS-CoV-2" annotation package provided by the author (see "2020Apr28" update on main page) into `~/annovar/sarscov2db`
+Next we need to install [ANNOVAR](https://annovar.openbioinformatics.org/en/latest/) for variant annotation, which sadly is not available for easy conda based installation, via the [registration form](https://www.openbioinformatics.org/annovar/annovar_download_form.php), articSlurmy will assume you have installed it to `~/annovar` with the "SARS-CoV-2" annotation package provided by the author (see "2020Apr28" and "2020Jun08" updates on the main page) into `~/annovar/sarscov2db`
 
 Finally [pangolin](https://github.com/hCoV-2019/pangolin) (Phylogenetic Assignment of Named Global Outbreak LINeages) need to be installed into its own conda environment to provide lineage assignment:
 
