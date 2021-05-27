@@ -220,7 +220,7 @@ conda activate pangolin
 pangolin -t ${CPU} -o ${TMPDIR}/${SAMPLE}.pangolin --tempdir ${TMPDIR} ${TMPDIR}/${SAMPLE}.consensus.fasta > ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.out 2>${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.err
 cp ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.lineage_report.csv
 echo "Lineage report:"
-cat ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv | tr ',' '\t' | column -t
+column -t -s ',' ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv 
 echo ""
 
 # Clean-up temp dir
