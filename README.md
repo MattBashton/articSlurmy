@@ -46,11 +46,11 @@ Finally [pangolin](https://github.com/hCoV-2019/pangolin) (Phylogenetic Assignme
 ```
 conda deactivate
 cd
-git clone https://github.com/hCoV-2019/pangolin
+git clone https://github.com/cov-lineages/pangolin
 cd pangolin
 conda env create -f environment.yml
 conda activate pangolin
-python setup.py install
+pip install .
 conda deactivate
 ```
 
