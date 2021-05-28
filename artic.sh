@@ -12,7 +12,8 @@
 # Needed for conda on our set-up
 source ~/.bashrc
 # Prevent Qt plotting issues with unattached X11 display
-DISPLAY=""
+# No longer needed with artic v.1.2.0+, (uncomment for older versions of artic)
+#DISPLAY=""
 
 TIME=$(date)
 HOST=$(hostname)
@@ -109,7 +110,7 @@ READS_POST=$(awk '{s++}END{print s/4}' ${TMPDIR}/${RUN_NAME}_${BARCODE}.fastq)
 PC_PLEX=$(echo "scale=8; (${READS_POST}/${READS_PRE})*100" | bc | xargs printf "%.2f\n")
 echo "Reads post guppyplex: ${READS_POST} (${PC_PLEX}%)"
 
-# artic minion final stage, many output / temp files written to ${TMPDIR} 
+# artic minion final stage, many output / temp files written to ${TMPDIR}
 echo "Running artic minion --normalise ${NORMALISE} on ${CPU} threads, fast5 dir is: ${INPUT_DIR}/fast5_pass"
 artic minion --normalise ${NORMALISE} --threads ${CPU} --scheme-directory ${SCHEME_DIR} --read-file ${TMPDIR}/${RUN_NAME}_${BARCODE}.fastq --fast5-directory ${INPUT_DIR}/fast5_pass --sequencing-summary ${SEQ_SUM} ${PRIMERS} ${SAMPLE}
 
@@ -198,8 +199,10 @@ echo "Creating output dir at ${OUTPUT_DIR}/processed/${RUN_NAME}"
 mkdir -p ${OUTPUT_DIR}/processed/${RUN_NAME}
 echo "Copying ${SAMPLE}.* ..."
 cp ${TMPDIR}/${SAMPLE}.* ${OUTPUT_DIR}/processed/${RUN_NAME}
-echo "Copying ${SAMPLE}-* ..."
-cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
+# Needed for older artic v.1.1.3 which produced .pngs with a different output
+# convention, commented out now as not produced in v.1.2.0 or higher
+#echo "Copying ${SAMPLE}-* ..."
+#cp ${TMPDIR}/${SAMPLE}-* ${OUTPUT_DIR}/processed/${RUN_NAME}
 
 echo "Gzipping ${RUN_NAME}_${BARCODE}.fastq ..."
 # Needs pigz, conda install pigz, into your artic-ncov2019 env
@@ -220,7 +223,7 @@ conda activate pangolin
 pangolin -t ${CPU} -o ${TMPDIR}/${SAMPLE}.pangolin --tempdir ${TMPDIR} ${TMPDIR}/${SAMPLE}.consensus.fasta > ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.out 2>${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.err
 cp ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv ${OUTPUT_DIR}/processed/${RUN_NAME}/${SAMPLE}.pangolin.lineage_report.csv
 echo "Lineage report:"
-column -t -s ',' ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv 
+column -t -s ',' ${TMPDIR}/${SAMPLE}.pangolin/lineage_report.csv
 echo ""
 
 # Clean-up temp dir
