@@ -62,7 +62,7 @@ conda deactivate
 
 ### 4) Check default setting are correct for your set-up
 
-Finally you should edit/check some local config settings in `artic.sh`, specifically check the `# Some defaults` section which details a few paths and run settings related to amplicons and primers you might want to check, specifically you might want to change `PRIMERS="nCoV-2019/V3"` to `PRIMERS="nCoV-2019/V4"` depending on which version of the artic primers you are using. I find `$TMPDIR` is often not configured correctly on Slurm clusters so create my own temp dir using `mktemp`, however the `-p` prefix will need pointing at the right path on the worker nodes. _e_._g_. `/scratch`, `/tmp`, or `/local` _etc_. depending on your local setup.
+Finally you should edit/check some local config settings in `artic.sh`, the `# Some defaults` section here details a few paths and run settings related to amplicons and primers you might want to check, specifically you might want to change `PRIMERS="nCoV-2019/V3"` to `PRIMERS="nCoV-2019/V4"` depending on which version of the artic primers you are using. I find `$TMPDIR` is often not configured correctly on Slurm clusters so create my own temp dir using `mktemp`, however the `-p` prefix will need pointing at the right path on the worker nodes. _e_._g_. `/scratch`, `/tmp`, or `/local` _etc_. depending on your local setup.
 
 ## Usage
 
