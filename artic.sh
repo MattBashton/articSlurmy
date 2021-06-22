@@ -50,10 +50,11 @@ MAX_LEN="700"
 NORMALISE="200"
 # This will be down to where you have artic-ncov2019 conda env installed
 SCHEME_DIR="${HOME}/artic-ncov2019/primer_schemes"
+# Change this lines to use V3 of V4 primers
 PRIMERS="nCoV-2019/V3"
+AMPLICON_BED="${SCHEME_DIR}/${PRIMERS}/nCoV-2019.insert.bed"
 ANNOVAR="${HOME}/annovar/table_annovar.pl"
 ANNOVAR_DB="${HOME}/annovar/sarscov2db"
-AMPLICON_BED="${HOME}/articSlurmy/ampliconsV3.bed"
 
 # Make tmpdir for run
 # The /scratch /tmp /local prefix here might be different on your system
@@ -82,9 +83,9 @@ echo " - Max length for read filtering: ${MAX_LEN}"
 echo " - Guppyplex normalisation setting: ${NORMALISE}"
 echo " - Primer scheme dir: ${SCHEME_DIR}"
 echo " - Primer type/version: ${PRIMERS}"
+echo " - Amplicons bed file: ${AMPLICON_BED}"
 echo " - Annovar: ${ANNOVAR}"
 echo " - Annovar DB: ${ANNOVAR_DB}"
-echo " - Amplicons bed file: ${AMPLICON_BED}"
 echo ""
 
 # Activate conda enviroment
