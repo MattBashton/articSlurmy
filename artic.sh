@@ -50,7 +50,7 @@ MAX_LEN="700"
 NORMALISE="200"
 # This will be down to where you have artic-ncov2019 conda env installed
 SCHEME_DIR="${HOME}/artic-ncov2019/primer_schemes"
-# Change this lines to use V3 of V4 primers
+# Change this lines to use V3 or V4 primers
 PRIMERS="nCoV-2019/V3"
 AMPLICON_BED="${SCHEME_DIR}/${PRIMERS}/nCoV-2019.insert.bed"
 ANNOVAR="${HOME}/annovar/table_annovar.pl"
@@ -123,7 +123,7 @@ ls -lh
 # Find number of aligned reads in ${SAMPLE}.sorted.bam
 echo ""
 ALN_READS=$(samtools view -c -F 2308 ${TMPDIR}/${SAMPLE}.sorted.bam)
-echo "Aligned reads in .sorted.bam: ${ALN_READS}"
+echo "Aligned reads in ${SAMPLE}.sorted.bam: ${ALN_READS}"
 
 # Annotate with annovar
 # Work out No variants called
