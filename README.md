@@ -29,6 +29,9 @@ conda env create -f environment.yml
 cd
 ```
 
+Tip: if resolving the environment is taking a long time Ctrl-C and try again setting:`conda config --set channel_priority strict`
+
+
 Next activate this environment and install additional channels and dependencies:
 
 ```
